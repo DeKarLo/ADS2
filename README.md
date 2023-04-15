@@ -6,6 +6,7 @@ ________
 ________
 #Features
 size(): Returns the number of elements in the list.
+//
 contains(Object o): Returns true if the list contains the specified element, false otherwise.
 add(T item): Adds the specified element to the end of the list.
 add(T item, int index): Adds the specified element at the specified index in the list.
