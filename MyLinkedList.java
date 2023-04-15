@@ -1,14 +1,15 @@
 import java.util.Iterator;
 public class MyLinkedList<T> implements MyList<T>, Iterable<T>{
-    private class MyNode {
+    private class Node {
         private final T data;
-        private MyNode next;
+        private Node next;
 
-        public MyNode(T data) {
+        public Node(T data) {
             this.data = data;
         }
     }
-    private MyNode head; // entry point
+    private Node head; // entry point
+    private Node tail; // last point
     private int length;
 
     @Override
@@ -19,8 +20,16 @@ public class MyLinkedList<T> implements MyList<T>, Iterable<T>{
 
     @Override
     public boolean contains(Object o) {
+        Node current = head;
+        while (current != null) {
+            if (current.data.equals(o)) {
+                return true;
+            }
+            current = current.next;
+        }
         return false;
     }
+
 
     @Override
     public void add(T item) {
@@ -68,7 +77,7 @@ public class MyLinkedList<T> implements MyList<T>, Iterable<T>{
     }
 
     private class MyIterator implements Iterator<T> {
-        MyNode cursor = head;
+        Node cursor = head;
 
         @Override
         public boolean hasNext() {
