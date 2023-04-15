@@ -46,7 +46,23 @@ public class MyLinkedList<T> implements MyList<T>, Iterable<T>{
 
     @Override
     public void add(T item, int index) {
+        if (index < 0 || index > length) {
+            throw new IndexOutOfBoundsException("Index out of bounds: " + index);
+        }
 
+        Node newNode = new Node (item);
+        if (index == 0) {
+            newNode.next = head;
+            head = newNode;
+        } else {
+            Node current = head;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+            }
+            newNode.next = current.next;
+            current.next = newNode;
+        }
+        length++;
     }
 
     @Override
