@@ -60,8 +60,8 @@ public class MyArrayList<T> implements MyList<T>{
 
     @Override
     public T remove(int index) {
-        T removed = (T) hiddenArr[index];
         if (index < 0 || index >= length) throw new IndexOutOfBoundsException("Index out of bounds: " + index);
+        T removed = (T) hiddenArr[index];
         for (int i = index; i < length - 1; i++) {
             hiddenArr[i] = hiddenArr[i + 1];
 
@@ -90,6 +90,7 @@ public class MyArrayList<T> implements MyList<T>{
 
     @Override
     public T get(int index) {
+        if (index < 0 || index >= length) throw new IndexOutOfBoundsException("Index out of bounds: " + index);
         return (T) hiddenArr[index];
     }
 
