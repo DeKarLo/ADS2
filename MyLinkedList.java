@@ -93,18 +93,26 @@ public class MyLinkedList<T> implements MyList<T>, Iterable<T>{
 
     @Override
     public T remove(int index) {
-        return null;
+        if (index < 0 || index >= length) {
+            throw new IndexOutOfBoundsException("Index out of bounds: " + index);
+        }
+
+        Node removedNode;
+        if (index == 0) {
+            removedNode = head;
+            head = head.next;
+        } else {
+            Node current = head;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+            }
+            removedNode = current.next;
+            current.next = current.next.next;
+        }
+        length--;
+        return removedNode.data;
     }
 
-    @Override
-    public void clear() {
-
-    }
-
-    @Override
-    public T get(int index) {
-        return null;
-    }
 
     @Override
     public int indexOf(Object o) {
