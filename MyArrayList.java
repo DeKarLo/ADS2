@@ -29,14 +29,18 @@ public class MyArrayList<T> implements MyList<T>{
     @Override
     public boolean contains(Object o) {
         for (int i = 0; i<length; i++){
-            if (o == hiddenArr[i]) return true;
+            if (hiddenArr[i].equals(o)) return true;
         }
         return false;
     }
 
     @Override
     public void add(T item) {
+        if (length == hiddenArr.length) {
+            increaseCapacity();
+        }
 
+        hiddenArr[length++] = item;
     }
 
     @Override
