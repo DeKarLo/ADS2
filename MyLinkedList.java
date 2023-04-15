@@ -113,6 +113,15 @@ public class MyLinkedList<T> implements MyList<T>, Iterable<T>{
         return removedNode.data;
     }
 
+    @Override
+    public void clear() {
+
+    }
+
+    @Override
+    public T get(int index) {
+        return null;
+    }
 
     @Override
     public int indexOf(Object o) {
