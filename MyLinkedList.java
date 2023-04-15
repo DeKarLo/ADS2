@@ -115,7 +115,9 @@ public class MyLinkedList<T> implements MyList<T>, Iterable<T>{
 
     @Override
     public void clear() {
-
+        head = null;
+        tail = null;
+        length = 0;
     }
 
     @Override
