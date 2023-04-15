@@ -162,6 +162,24 @@ public class MyLinkedList<T> implements MyList<T>, Iterable<T>{
         return lastIndex;
     }
 
+    public String toString() {
+        if (head == null) {
+            return "[]";
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        Node current = head;
+        while (current != null) {
+            sb.append(current.data);
+            if (current.next != null) {
+                sb.append(", ");
+            }
+            current = current.next;
+        }
+        sb.append("]");
+        return sb.toString();
+    }
 
     @Override
     public Iterator<T> iterator() {
