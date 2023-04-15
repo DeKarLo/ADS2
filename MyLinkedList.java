@@ -149,7 +149,17 @@ public class MyLinkedList<T> implements MyList<T>, Iterable<T>{
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        Node current = head;
+        int lastIndex = -1;
+        int index = 0;
+        while (current != null) {
+            if (current.data.equals(o)) {
+                lastIndex = index;
+            }
+            current = current.next;
+            index++;
+        }
+        return lastIndex;
     }
 
 
