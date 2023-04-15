@@ -84,7 +84,8 @@ public class MyArrayList<T> implements MyList<T>{
 
     @Override
     public void clear() {
-
+        hiddenArr = new Object[5];
+        length = 0;
     }
 
     @Override
