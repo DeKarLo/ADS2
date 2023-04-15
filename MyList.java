@@ -11,5 +11,5 @@ public interface MyList<T> {
     T get(int index);
     int indexOf(Object o);
     int lastIndexOf(Object o);
-
+    String toString();
 }
