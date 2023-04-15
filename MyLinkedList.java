@@ -122,7 +122,15 @@ public class MyLinkedList<T> implements MyList<T>, Iterable<T>{
 
     @Override
     public T get(int index) {
-        return null;
+        if (index < 0 || index >= length) {
+            throw new IndexOutOfBoundsException("Index out of bounds: " + index);
+        }
+
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.data;
     }
 
     @Override
