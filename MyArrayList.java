@@ -1,4 +1,5 @@
 public class MyArrayList<T> implements MyList<T>{
+    private int capacity;
     private Object[] hiddenArr;
     private int length;
 
@@ -45,18 +46,30 @@ public class MyArrayList<T> implements MyList<T>{
 
     @Override
     public void add(T item, int index) {
-        if (index > length) throw new IndexOutOfBoundsException("Index out of bounds: " + index);
-        for (int i = index; i < length - 1; i++) {
-            hiddenArr[i] = hiddenArr[i + 1];
+        if (index < 0 || index >= length) throw new IndexOutOfBoundsException("Index out of bounds: " + index);
+        if (length == hiddenArr.length) {
+            increaseCapacity();
         }
-        hiddenArr[--length] = null;
+        for (int i = length; i > index; i--) {
+            hiddenArr[i] = hiddenArr[i-1];
+        }
+        hiddenArr[index] = item;
+        length++;
 
     }
 
     @Override
     public T remove(int index) {
-        return null;
+        T removed = (T) hiddenArr[index];
+        if (index < 0 || index >= length) throw new IndexOutOfBoundsException("Index out of bounds: " + index);
+        for (int i = index; i < length - 1; i++) {
+            hiddenArr[i] = hiddenArr[i + 1];
+
+        }
+        length--;
+        return removed;
     }
+
 
     @Override
     public boolean remove(T item) {
@@ -70,7 +83,7 @@ public class MyArrayList<T> implements MyList<T>{
 
     @Override
     public T get(int index) {
-        return null;
+        return (T) hiddenArr[index];
     }
 
     @Override
