@@ -33,7 +33,15 @@ public class MyLinkedList<T> implements MyList<T>, Iterable<T>{
 
     @Override
     public void add(T item) {
-
+        Node newNode = new Node(item);
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+        length++;
     }
 
     @Override
@@ -70,6 +78,7 @@ public class MyLinkedList<T> implements MyList<T>, Iterable<T>{
     public int lastIndexOf(Object o) {
         return 0;
     }
+
 
     @Override
     public Iterator<T> iterator() {
