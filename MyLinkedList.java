@@ -1,3 +1,4 @@
+import java.util.Iterator;
 public class MyLinkedList<T> implements MyList<T>{
     private class MyNode {
         private final T data;
@@ -7,6 +8,8 @@ public class MyLinkedList<T> implements MyList<T>{
             this.data = data;
         }
     }
+    private MyNode head; // entry point
+    private int length;
 
     @Override
     public int size() {
@@ -56,5 +59,26 @@ public class MyLinkedList<T> implements MyList<T>{
     @Override
     public int lastIndexOf(Object o) {
         return 0;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new MyIterator();
+    }
+
+    private class MyIterator implements Iterator<T> {
+        MyNode cursor = head;
+
+        @Override
+        public boolean hasNext() {
+            return cursor != null;
+        }
+
+        @Override
+        public T next() {
+            T data = cursor.data;
+            cursor = cursor.next;
+            return data;
+        }
     }
 }

@@ -1,4 +1,5 @@
 import java.util.Comparator;
+import java.util.Iterator;
 
 public interface MyList<T> {
     int size();
@@ -11,5 +12,6 @@ public interface MyList<T> {
     T get(int index);
     int indexOf(Object o);
     int lastIndexOf(Object o);
-    String toString();
+
+    Iterator<T> iterator();
 }
