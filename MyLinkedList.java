@@ -1,5 +1,5 @@
 import java.util.Iterator;
-public class MyLinkedList<T> implements MyList<T>{
+public class MyLinkedList<T> implements MyList<T>, Iterable<T>{
     private class MyNode {
         private final T data;
         private MyNode next;
@@ -13,7 +13,7 @@ public class MyLinkedList<T> implements MyList<T>{
 
     @Override
     public int size() {
-        return 0;
+        return length;
     }
 
     @Override

@@ -13,5 +13,4 @@ public interface MyList<T> {
     int indexOf(Object o);
     int lastIndexOf(Object o);
 
-    Iterator<T> iterator();
 }
