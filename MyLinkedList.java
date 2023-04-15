@@ -135,7 +135,16 @@ public class MyLinkedList<T> implements MyList<T>, Iterable<T>{
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        Node current = head;
+        int index = 0;
+        while (current != null) {
+            if (current.data.equals(o)) {
+                return index;
+            }
+            current = current.next;
+            index++;
+        }
+        return -1;
     }
 
     @Override
