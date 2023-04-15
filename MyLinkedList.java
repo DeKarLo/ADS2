@@ -67,7 +67,28 @@ public class MyLinkedList<T> implements MyList<T>, Iterable<T>{
 
     @Override
     public boolean remove(T item) {
-        return false;
+        if (head == null) {
+            return false;
+        }
+
+        if (head.data.equals(item)) {
+            head = head.next;
+            length--;
+            return true;
+        }
+
+        Node current = head;
+        while (current.next != null && !current.next.data.equals(item)) {
+            current = current.next;
+        }
+
+        if (current.next == null) {
+            return false;
+        }
+
+        current.next = current.next.next;
+        length--;
+        return true;
     }
 
     @Override
